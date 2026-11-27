@@ -3,24 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ivan's world XD - Iván Sánchez Moreno (@poxeco) [Frutiger Aero]</title>
-    <!-- Iconos FontAwesome -->
+    <title>ivan's world XD - @poxeco [Frutiger Aero]</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Tipografías retro Y2K y Frutiger Aero -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,400;0,700;1,700&family=Outfit:wght@400;600;700;800&family=VT323&display=swap" rel="stylesheet">
-    <!-- Librería generadora de Código QR -->
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Outfit:wght@400;600;800&family=VT323&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
     <style>
-        /* Variables de tema Frutiger Aero / Eco */
         :root {
-            --bg-canvas: linear-gradient(180deg, #b8f0ff 0%, #e4ffd6 52%, #a3ecff 100%);
-            --header-grad: linear-gradient(180deg, #7be0ff 0%, #009be8 50%, #006da8 100%);
-            --aero-blue: #0088cc;
-            --aero-green: #2eb82e;
-            --text-dark: #00334d;
+            --bg-main: linear-gradient(180deg, #b3ecff 0%, #e6ffcc 50%, #99ebff 100%);
+            --header-grad: linear-gradient(180deg, #66d9ff 0%, #0099e6 50%, #0077b3 100%);
         }
 
         * {
@@ -30,208 +20,171 @@
         }
 
         body {
-            background: linear-gradient(135deg, #00a8ff 0%, #00e676 48%, #0077ff 100%);
+            background: linear-gradient(135deg, #00aaff 0%, #00e676 50%, #0088ff 100%);
             background-attachment: fixed;
             font-family: 'Comic Neue', 'Outfit', sans-serif;
             min-height: 100vh;
-            padding: 14px;
+            padding: 15px;
             display: flex;
             justify-content: center;
             align-items: flex-start;
             overflow-x: hidden;
-            color: var(--text-dark);
         }
 
-        /* Destello solar Frutiger Aero en el cielo */
-        .aero-sunburst {
+        .bubble {
             position: fixed;
-            top: -180px;
-            left: 20%;
-            width: 750px;
-            height: 750px;
-            background: radial-gradient(circle, rgba(255,255,255,0.85) 0%, rgba(128,235,255,0.35) 40%, transparent 70%);
+            bottom: -100px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(0,210,255,0.3) 60%, rgba(118,224,22,0.5));
+            border: 1px solid rgba(255,255,255,0.8);
+            box-shadow: inset -4px -4px 10px rgba(0,80,120,0.2), 0 4px 15px rgba(255,255,255,0.3);
             pointer-events: none;
             z-index: 0;
-            filter: blur(30px);
+            animation: rise 15s infinite ease-in;
         }
 
-        /* Burbujas 3D flotantes */
-        .bubble-3d {
-            position: fixed;
-            bottom: -110px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 32% 30%, rgba(255,255,255,0.95), rgba(0,212,255,0.35) 55%, rgba(118,224,22,0.6) 95%);
-            border: 1.5px solid rgba(255,255,255,0.9);
-            box-shadow: inset -4px -4px 10px rgba(0,75,120,0.25), inset 4px 4px 10px rgba(255,255,255,0.9), 0 6px 18px rgba(0,50,90,0.2);
-            pointer-events: none;
-            z-index: 1;
-            animation: floatBubble 15s infinite ease-in-out;
+        @keyframes rise {
+            0% { transform: translateY(0) scale(0.8); opacity: 0; }
+            20% { opacity: 0.85; }
+            80% { opacity: 0.85; }
+            100% { transform: translateY(-115vh) scale(1.2); opacity: 0; }
         }
 
-        @keyframes floatBubble {
-            0% { transform: translateY(0) scale(0.75); opacity: 0; }
-            15% { opacity: 0.9; }
-            85% { opacity: 0.9; }
-            100% { transform: translateY(-118vh) scale(1.25); opacity: 0; }
-        }
-
-        /* Marco Principal de Navegador Retro Y2K / Aero */
         .browser-window {
             position: relative;
             z-index: 10;
             width: 100%;
-            max-width: 860px;
-            background: #eefbff;
+            max-width: 850px;
+            background: #f0fbff;
             border: 3px solid #ffffff;
-            border-radius: 16px 16px 10px 10px;
-            box-shadow: 0 22px 55px rgba(0, 35, 70, 0.45), 0 0 0 2px #006da8;
+            border-radius: 14px 14px 8px 8px;
+            box-shadow: 0 20px 50px rgba(0, 40, 80, 0.45), 0 0 0 2px #0077b3;
             overflow: hidden;
         }
 
-        /* Pestañas superiores estilo navegador clásico */
         .browser-tabs {
             background: var(--header-grad);
-            padding: 9px 12px 0 12px;
+            padding: 8px 10px 0 10px;
             display: flex;
             align-items: flex-end;
             gap: 6px;
-            border-bottom: 2px solid #004c75;
-            flex-wrap: wrap;
+            border-bottom: 2px solid #005580;
         }
 
         .tab {
             background: rgba(255, 255, 255, 0.65);
             color: #00334d;
-            padding: 7px 16px;
-            border-radius: 11px 11px 0 0;
-            font-size: 14px;
-            font-weight: 800;
+            padding: 6px 14px;
+            border-radius: 10px 10px 0 0;
+            font-size: 13px;
+            font-weight: 700;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 8px;
-            border: 1.5px solid rgba(255,255,255,0.9);
+            border: 1px solid rgba(255,255,255,0.8);
             border-bottom: none;
-            transition: all 0.2s ease;
-            user-select: none;
-        }
-
-        .tab:hover {
-            background: rgba(255, 255, 255, 0.85);
+            transition: 0.2s;
         }
 
         .tab.active {
-            background: #e3f8ff;
-            color: #005282;
-            box-shadow: 0 -3px 10px rgba(0,0,0,0.15);
-            padding-bottom: 9px;
+            background: #e6f9ff;
+            color: #005580;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.15);
         }
 
         .window-controls {
             margin-left: auto;
             display: flex;
             gap: 5px;
-            padding-bottom: 7px;
+            padding-bottom: 6px;
         }
 
         .win-btn {
-            width: 24px;
+            width: 22px;
             height: 22px;
-            background: linear-gradient(180deg, #ffffff 0%, #bce8ff 100%);
+            background: linear-gradient(180deg, #fff 0%, #cceeff 100%);
             border: 1px solid #004466;
-            border-radius: 5px;
+            border-radius: 4px;
             font-size: 11px;
-            font-weight: 800;
+            font-weight: bold;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #00334d;
-            box-shadow: inset 0 1px 0 #fff;
-            cursor: pointer;
         }
 
-        .win-btn.close {
-            background: linear-gradient(180deg, #ff9999 0%, #e62e2e 100%);
-            color: #fff;
-        }
-
-        /* Barra de herramientas y dirección URL */
         .browser-toolbar {
-            background: linear-gradient(180deg, #e3f8ff 0%, #c4ecff 100%);
+            background: linear-gradient(180deg, #e6f9ff 0%, #ccefff 100%);
             padding: 8px 12px;
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
             gap: 8px;
-            border-bottom: 2px solid #8ad8ff;
+            border-bottom: 2px solid #99ddff;
             font-size: 13px;
-            font-weight: 700;
-            flex-wrap: wrap;
+            color: #004466;
+            font-weight: bold;
         }
 
         .nav-icon-btn {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 5px;
             cursor: pointer;
             padding: 4px 10px;
-            border-radius: 14px;
-            background: linear-gradient(180deg, #ffffff 0%, #d9f3ff 100%);
-            border: 1.5px solid #66c7ff;
-            color: #004466;
-            font-weight: 800;
-            box-shadow: 0 2px 4px rgba(0,80,120,0.12);
-            transition: transform 0.15s;
-            user-select: none;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.85);
+            border: 1px solid #80d4ff;
+            transition: 0.15s;
         }
 
         .nav-icon-btn:hover {
-            transform: scale(1.04);
             background: #ffffff;
+            transform: scale(1.03);
         }
 
         .address-bar {
             flex: 1;
-            min-width: 190px;
+            min-width: 180px;
             background: #ffffff;
-            border: 2px solid #66c7ff;
-            border-radius: 16px;
+            border: 2px solid #80d4ff;
+            border-radius: 15px;
             padding: 4px 14px;
             font-family: 'VT323', monospace;
-            font-size: 18px;
-            color: #005282;
+            font-size: 17px;
+            color: #005580;
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.08);
         }
 
-        /* Lienzo interior de la página con cuadrícula retro Y2K */
         .page-canvas {
-            background: var(--bg-canvas);
+            background: var(--bg-main);
             background-image: 
-                linear-gradient(rgba(0, 145, 210, 0.08) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 145, 210, 0.08) 1px, transparent 1px),
-                var(--bg-canvas);
+                linear-gradient(rgba(0, 153, 204, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 153, 204, 0.08) 1px, transparent 1px),
+                var(--bg-main);
             background-size: 24px 24px, 24px 24px, 100% 100%;
             padding: 22px;
-            min-height: 580px;
+            min-height: 550px;
             position: relative;
         }
 
-        /* Cabecera estilo "welcome to ivan's world" con botones gloss (Sin apartado posts) */
         .site-header {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
             gap: 15px;
-            padding-bottom: 16px;
-            border-bottom: 2.5px dashed #2eb8ff;
-            margin-bottom: 22px;
+            padding-bottom: 15px;
+            border-bottom: 2px dashed #33bbff;
+            margin-bottom: 20px;
         }
 
         .site-logo {
-            font-size: 31px;
+            font-size: 28px;
             font-weight: 800;
             color: #006699;
-            text-shadow: 2px 2px 0px #ffffff, -1px -1px 0px #80ffaa, 0 4px 10px rgba(0,136,204,0.25);
+            text-shadow: 2px 2px 0px #ffffff, -1px -1px 0px #80ffaa;
             line-height: 1.05;
         }
 
@@ -243,58 +196,54 @@
         }
 
         .aero-pill {
-            background: linear-gradient(180deg, #ffffff 0%, #ccf2ff 48%, #5cd6ff 52%, #8cff99 100%);
+            background: linear-gradient(180deg, #ffffff 0%, #ccf2ff 48%, #66d9ff 52%, #99ff99 100%);
             border: 2px solid #ffffff;
-            box-shadow: 0 4px 10px rgba(0, 102, 153, 0.28), 0 0 0 1.5px #0088cc;
-            border-radius: 22px;
-            padding: 7px 20px;
-            font-weight: 800;
-            font-size: 15px;
+            box-shadow: 0 3px 8px rgba(0, 102, 153, 0.3), 0 0 0 1px #0088cc;
+            border-radius: 20px;
+            padding: 6px 18px;
+            font-weight: 700;
+            font-size: 14px;
             color: #00334d;
             cursor: pointer;
-            display: inline-flex;
+            display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 7px;
+            transition: transform 0.15s;
             text-decoration: none;
-            transition: transform 0.15s, filter 0.15s;
         }
 
         .aero-pill:hover, .aero-pill.active-pill {
-            transform: scale(1.06);
-            background: linear-gradient(180deg, #ffffff 0%, #d9ffcc 48%, #47d147 52%, #00bfff 100%);
-            filter: brightness(1.05);
+            transform: scale(1.05);
+            background: linear-gradient(180deg, #ffffff 0%, #d9ffcc 48%, #5cd65c 52%, #00bfff 100%);
         }
 
-        /* Botón especial brillante rosa/morado cristal para Instagram @poxeco */
         .ig-gloss-btn {
-            background: linear-gradient(180deg, #ffffff 0%, #ffd6eb 46%, #ff3385 52%, #9933ff 100%);
+            background: linear-gradient(180deg, #ffffff 0%, #ffe6f2 45%, #ff3385 52%, #9933ff 100%);
             border: 2px solid #ffffff;
-            box-shadow: 0 4px 12px rgba(230, 0, 115, 0.35), 0 0 0 1.5px #cc0066;
-            border-radius: 22px;
+            box-shadow: 0 4px 12px rgba(255, 51, 133, 0.4), 0 0 0 1px #cc0066;
+            border-radius: 20px;
             padding: 7px 18px;
             font-weight: 800;
-            font-size: 15px;
+            font-size: 14px;
             color: #ffffff;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.55);
-            cursor: pointer;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+            text-decoration: none;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
-            text-decoration: none;
             transition: transform 0.15s, box-shadow 0.15s;
         }
 
         .ig-gloss-btn:hover {
-            transform: scale(1.07);
-            box-shadow: 0 6px 18px rgba(255, 51, 133, 0.55), 0 0 0 2px #ffffff;
+            transform: scale(1.06);
+            box-shadow: 0 6px 18px rgba(255, 51, 133, 0.65), 0 0 0 1px #ff0080;
         }
 
-        /* Grid Principal Home */
         .home-grid {
             display: grid;
-            grid-template-columns: 1.08fr 0.92fr;
-            gap: 22px;
-            align-items: start;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 20px;
         }
 
         @media (max-width: 700px) {
@@ -307,46 +256,39 @@
             color: #0099cc;
             letter-spacing: 3px;
             font-size: 14px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             user-select: none;
         }
 
         .intro-text {
-            font-size: 16.5px;
+            font-size: 16px;
             color: #003d5c;
-            line-height: 1.55;
+            line-height: 1.5;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 14px;
         }
 
-        /* Foto Principal (Camiseta Roja) con Stickers Frutiger Aero */
         .avatar-sticker-wrap {
             position: relative;
             display: inline-block;
             margin-top: 8px;
-            cursor: pointer;
         }
 
         .avatar-frame {
-            width: 245px;
-            height: 255px;
+            width: 235px;
+            height: 250px;
             border-radius: 22px;
             border: 4px solid #ffffff;
-            box-shadow: 0 12px 28px rgba(0, 85, 128, 0.35), 0 0 0 2px #00aaff;
+            box-shadow: 0 10px 25px rgba(0, 85, 128, 0.35), 0 0 0 2px #00aaff;
             object-fit: cover;
             object-position: center top;
             background: #ccefff;
             display: block;
-            transition: transform 0.2s;
-        }
-
-        .avatar-sticker-wrap:hover .avatar-frame {
-            transform: scale(1.02);
         }
 
         .sticker-badge {
             position: absolute;
-            background: linear-gradient(135deg, #ffffff 0%, #ccffdd 100%);
+            background: linear-gradient(135deg, #ffffff, #ccffdd);
             border: 2px solid #00aaff;
             border-radius: 50px;
             padding: 4px 12px;
@@ -357,13 +299,12 @@
             white-space: nowrap;
         }
 
-        /* Cajas laterales estilo "my fav songs" & recuerdos */
         .widget-box {
             background: rgba(255, 255, 255, 0.82);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(8px);
             border: 2px solid #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 6px 18px rgba(0, 102, 153, 0.2), 0 0 0 1.5px #66ccff;
+            border-radius: 14px;
+            box-shadow: 0 6px 16px rgba(0, 102, 153, 0.2), 0 0 0 1px #66ccff;
             overflow: hidden;
             margin-bottom: 16px;
         }
@@ -371,8 +312,8 @@
         .widget-header {
             background: linear-gradient(90deg, #0099e6 0%, #33cc33 100%);
             color: #ffffff;
-            font-weight: 800;
-            padding: 8px 14px;
+            font-weight: 700;
+            padding: 7px 14px;
             font-size: 15px;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
             display: flex;
@@ -382,7 +323,7 @@
 
         .widget-body {
             padding: 14px;
-            font-size: 14.5px;
+            font-size: 14px;
             color: #00334d;
         }
 
@@ -391,16 +332,16 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            background: linear-gradient(180deg, #5cd65c 0%, #1f8a1f 100%);
+            background: linear-gradient(180deg, #5cd65c 0%, #248f24 100%);
             color: white;
             text-decoration: none;
             font-weight: 800;
-            padding: 11px 14px;
-            border-radius: 14px;
+            padding: 10px;
+            border-radius: 12px;
             border: 2px solid #ffffff;
-            box-shadow: 0 4px 12px rgba(31, 138, 31, 0.35);
-            margin-top: 10px;
-            transition: transform 0.15s, filter 0.15s;
+            box-shadow: 0 4px 10px rgba(36, 143, 36, 0.35);
+            margin-top: 8px;
+            transition: 0.2s;
         }
 
         .spotify-btn:hover {
@@ -408,13 +349,16 @@
             filter: brightness(1.08);
         }
 
-        /* Sección About Me */
         .about-top {
             display: grid;
             grid-template-columns: 235px 1fr;
             gap: 20px;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
+        }
+
+        .about-photo-wrap {
+            position: relative;
         }
 
         .about-photo {
@@ -422,52 +366,51 @@
             height: 235px;
             object-fit: cover;
             border: 4px solid #ffffff;
-            border-radius: 18px;
-            box-shadow: 0 8px 20px rgba(0,85,128,0.28), 0 0 0 2px #33cc33;
-            cursor: pointer;
+            border-radius: 16px;
+            box-shadow: 0 6px 16px rgba(0,85,128,0.25), 0 0 0 2px #33cc33;
+            background: #e6ffcc;
+            display: block;
         }
 
         .bio-list {
-            background: rgba(255, 255, 255, 0.84);
+            background: rgba(255, 255, 255, 0.85);
             border: 2px solid #ffffff;
-            border-radius: 18px;
-            padding: 18px;
-            box-shadow: 0 6px 16px rgba(0, 102, 153, 0.16), 0 0 0 1px #80d4ff;
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 4px 12px rgba(0, 102, 153, 0.15);
             line-height: 1.75;
             font-size: 15px;
-        }
-
-        .bio-item {
-            margin-bottom: 8px;
-            padding-bottom: 6px;
-            border-bottom: 1px dashed rgba(0, 136, 204, 0.25);
-        }
-
-        .bio-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
         }
 
         .bio-label {
             font-weight: 800;
         }
         .c-blue { color: #0077b3; }
-        .c-green { color: #1f8a1f; }
+        .c-green { color: #248f24; }
         .c-teal { color: #008080; }
         .c-cyan { color: #0099cc; }
-        .c-purple { color: #6600cc; }
+        .c-purple { color: #5c0099; }
 
-        /* Pestaña 2: AeroNet Profile (Sin Mejores Amigos) */
+        .thanks-banner {
+            margin-top: 14px;
+            padding: 12px 15px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #e6f9ff 0%, #e6ffcc 100%);
+            border: 2px solid #33cc33;
+            color: #004466;
+            font-weight: 700;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
         .social-banner {
             background: linear-gradient(90deg, #0077b3, #00bfff, #5cd65c);
             color: white;
             padding: 7px 14px;
             font-weight: 800;
-            border-radius: 10px;
-            margin-bottom: 16px;
+            border-radius: 8px;
+            margin-bottom: 15px;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-            border: 1.5px solid #ffffff;
         }
 
         .palster-grid {
@@ -479,59 +422,53 @@
         .profile-box {
             background: rgba(255,255,255,0.88);
             border: 2px solid #0088cc;
-            border-radius: 14px;
-            padding: 15px;
-            box-shadow: 0 4px 12px rgba(0, 85, 128, 0.15);
+            border-radius: 12px;
+            padding: 14px;
         }
 
         .profile-box h3 {
             border-bottom: 2px solid #80d4ff;
-            padding-bottom: 6px;
-            margin-bottom: 12px;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
             color: #005580;
             font-size: 16px;
             text-transform: uppercase;
-            font-weight: 800;
         }
 
-        .gallery-mini-grid {
+        .gallery-strip {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
-            margin-top: 10px;
+            margin-top: 12px;
         }
 
         .gallery-card {
-            background: #f4fbff;
-            border: 2px solid #99ddff;
-            border-radius: 12px;
+            background: #ffffff;
+            border: 2px solid #80d4ff;
+            border-radius: 10px;
             padding: 8px;
             text-align: center;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
         }
 
         .gallery-card img {
             width: 100%;
-            height: 155px;
+            height: 165px;
             object-fit: cover;
-            object-position: center top;
-            border-radius: 8px;
-            border: 2px solid #ffffff;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            border-radius: 6px;
             margin-bottom: 6px;
-            cursor: pointer;
         }
 
-        /* Selector de color de fondo inferior */
         .bg-customizer {
-            margin-top: 24px;
-            padding-top: 14px;
-            border-top: 2.5px dashed #2eb8ff;
+            margin-top: 22px;
+            padding-top: 12px;
+            border-top: 2px dashed #33bbff;
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 12px;
-            font-weight: 800;
+            gap: 10px;
+            font-weight: 700;
             color: #004466;
             font-size: 14px;
         }
@@ -543,29 +480,17 @@
         }
 
         .color-swatch {
-            width: 26px;
-            height: 26px;
+            width: 24px;
+            height: 24px;
             border: 2px solid #004466;
-            border-radius: 7px;
+            border-radius: 6px;
             cursor: pointer;
-            box-shadow: inset 0 2px 3px rgba(255,255,255,0.85), 0 2px 5px rgba(0,0,0,0.15);
+            box-shadow: inset 0 2px 3px rgba(255,255,255,0.8);
             transition: transform 0.15s;
         }
 
         .color-swatch:hover {
-            transform: scale(1.18);
-        }
-
-        .qr-download-btn {
-            margin-top: 8px;
-            background: linear-gradient(180deg, #ffffff 0%, #cceeff 50%, #33bbff 100%);
-            border: 1.5px solid #006699;
-            border-radius: 12px;
-            padding: 5px 12px;
-            font-size: 12px;
-            font-weight: 800;
-            color: #00334d;
-            cursor: pointer;
+            transform: scale(1.15);
         }
 
         .hidden {
@@ -575,16 +500,10 @@
 </head>
 <body>
 
-    <!-- Elementos de ambiente Frutiger Aero -->
-    <div class="aero-sunburst"></div>
     <div id="bubbles"></div>
 
-    <!-- Inputs ocultos para cargar fotos locales en la vista previa al instante -->
-    <input type="file" id="upload-main" accept="image/*" class="hidden" onchange="previewPhoto(event, 'main')">
-    <input type="file" id="upload-secondary" accept="image/*" class="hidden" onchange="previewPhoto(event, 'sec')">
-
     <div class="browser-window">
-        <!-- Barra de pestañas superior estilo navegador Y2K -->
+        <!-- Barra de pestañas superior -->
         <div class="browser-tabs">
             <div class="tab active" id="tab-world" onclick="switchMainTab('world')">
                 <i class="fa-solid fa-earth-americas" style="color:#009933;"></i> ivan's world XD
@@ -593,35 +512,24 @@
                 <i class="fa-solid fa-droplet" style="color:#0088cc;"></i> AeroNet Profile
             </div>
             <div class="window-controls">
-                <div class="win-btn" title="Minimizar">_</div>
-                <div class="win-btn" title="Maximizar">□</div>
-                <div class="win-btn close" title="Cerrar">✕</div>
+                <div class="win-btn">_</div>
+                <div class="win-btn">□</div>
+                <div class="win-btn">✕</div>
             </div>
         </div>
 
-        <!-- Barra de direcciones y botones de navegación -->
+        <!-- Barra de direcciones -->
         <div class="browser-toolbar">
-            <div class="nav-icon-btn" onclick="showSection('home')">
-                <i class="fa-solid fa-circle-arrow-left" style="color:#2eb82e;"></i> Back
-            </div>
-            <div class="nav-icon-btn" onclick="switchMainTab('profile')">
-                <i class="fa-solid fa-qrcode" style="color:#0088cc;"></i> QR & Fotos
-            </div>
-            <div class="nav-icon-btn" onclick="document.getElementById('upload-main').click()" title="Cargar Foto Principal (camiseta roja)">
-                <i class="fa-solid fa-camera" style="color:#cc0066;"></i> Foto 1
-            </div>
-            <div class="nav-icon-btn" onclick="document.getElementById('upload-sec').click()" title="Cargar Foto Secundaria (mochila DC)">
-                <i class="fa-solid fa-image" style="color:#248f24;"></i> Foto 2
-            </div>
+            <div class="nav-icon-btn" onclick="showSection('home')"><i class="fa-solid fa-circle-arrow-left" style="color:#2eb82e;"></i> Back</div>
+            <div class="nav-icon-btn" onclick="switchMainTab('profile')"><i class="fa-solid fa-qrcode" style="color:#0088cc;"></i> QR & Galería</div>
             <div class="address-bar" id="url-display">http://ivansworldxd.com/home</div>
         </div>
 
-        <!-- Lienzo interior de la página -->
+        <!-- Lienzo principal -->
         <div class="page-canvas" id="page-canvas">
 
             <!-- VISTA 1: IVAN'S WORLD XD -->
             <div id="view-world">
-                <!-- Cabecera estilo "welcome to ivan's world" (Solo home, about me y botón IG) -->
                 <div class="site-header">
                     <div class="site-logo">
                         welcome to<br>ivan's world
@@ -642,66 +550,61 @@
                 <!-- SUB-SECCIÓN: HOME -->
                 <div id="section-home" class="home-grid">
                     <div>
-                        <div class="aero-divider">💧 🌿 🌐 🛹 💧 🌿 🌐 🛹 💧 🌿</div>
+                        <div class="aero-divider">💧 🌿 🌐 💧 🌿 🌐 💧 🌿 🌐 💧 🌿</div>
                         <p class="intro-text">
-                            bienvenido a mi espacio :) soy <strong>Iván Sánchez Moreno (@poxeco)</strong>. Me encanta el rollerboarding, ir al skatepark a tirar trucos con música y salir con mis amigos.
+                            bienvenido a mi rincón digital :) soy <strong>Iván Sánchez Moreno (@poxeco)</strong>. Me encanta el rollerboarding, ir al skatepark a tirar trucos con música y salir con mis colegas.
                         </p>
                         <p class="intro-text" style="color:#0077b3;">
-                            "Aprovecha tu vida al máximo, prueba todo tipo de cosas y colecciona experiencias inolvidables." xD
+                            "Aprovecha tu vida al máximo y colecciona experiencias inolvidables." xD
                         </p>
 
-                        <!-- Foto Principal (Camiseta Roja / Reloj Blanco) -->
-                        <div class="avatar-sticker-wrap" onclick="document.getElementById('upload-main').click()" title="Haz clic para cargar tu foto principal en la vista previa">
-                            <img src="Screenshot 2026-11-13 at 09-51-50 Instagram.jpg" onerror="this.src='https://placehold.co/400x420/0088cc/ffffff?text=Ivan+%40poxeco+(Foto+Roja)';" alt="Iván Sánchez Moreno (@poxeco) - halloween 26" class="avatar-frame photo-main">
-                            <div class="sticker-badge" style="top:-12px; left:-10px; background: linear-gradient(135deg, #fff, #ffe0cc); border-color: #ff6600; color: #993300;">
-                                🎃 halloween 26
-                            </div>
-                            <div class="sticker-badge" style="top:-12px; right:-18px;">
+                        <!-- FOTO PRINCIPAL: halloween 26 -->
+                        <div class="avatar-sticker-wrap">
+                            <img id="img-main-home" alt="halloween 26 - Iván Sánchez Moreno (@poxeco)" class="avatar-frame photo-main">
+                            <div class="sticker-badge" style="top:-10px; right:-22px;">
                                 ♋ Cáncer | 1,77 m
                             </div>
                             <div class="sticker-badge" style="bottom:10px; left:-10px;">
-                                🛹 Rollerboard & SKP
+                                🎃 halloween 26
                             </div>
                         </div>
                     </div>
 
                     <div>
-                        <!-- Caja estilo "my fav songs" con enlace directo a tu Spotify -->
+                        <!-- Caja estilo "my fav songs" -->
                         <div class="widget-box">
                             <div class="widget-header">
                                 <span>🎵 my fav music / mi vibra</span>
                                 <i class="fa-solid fa-compact-disc fa-spin"></i>
                             </div>
                             <div class="widget-body">
-                                <p style="font-weight:700; line-height:1.45;">
-                                    Mi playlist en general es mi vibra. Dale play para escuchar la música que escucho ahora mismo:
-                                </p>
+                                <p style="margin-bottom:8px; font-weight:700;">Mi playlist en general es mi vibra. Dale play para escuchar lo que escucho:</p>
                                 <a href="https://open.spotify.com/playlist/5WVI1C3Bf2m2KpocjCXYnk?si=ZFebK4rlRiKiLVWr6xLbCg&utm_source=copy-link" target="_blank" rel="noopener noreferrer" class="spotify-btn">
-                                    <i class="fa-brands fa-spotify" style="font-size:20px;"></i> Escuchar mi Playlist en Spotify
+                                    <i class="fa-brands fa-spotify" style="font-size:20px;"></i> Abrir mi Playlist en Spotify
                                 </a>
                             </div>
                         </div>
 
-                        <!-- Caja estilo "recuerdos inolvidables" (Chequia Erasmus y Londres) -->
+                        <!-- Caja estilo "recuerdos inolvidables" -->
                         <div class="widget-box">
                             <div class="widget-header">
-                                <span>🌍 recuerdos inolvidables</span>
+                                <span>🌊 recuerdos inolvidables</span>
                                 <span>✨</span>
                             </div>
-                            <div class="widget-body" style="text-align:center; font-weight:800; color:#005580; line-height:1.5;">
+                            <div class="widget-body" style="text-align:center; font-weight:700; line-height:1.5;">
                                 "Mi viaje a Chequia de Erasmus 🇨🇿✈️ y el día que fui a Londres con mis amigos de clase 🇬🇧"
                             </div>
                         </div>
 
-                        <!-- Caja de acceso directo a Instagram @poxeco -->
+                        <!-- Caja botón directo a Instagram @poxeco -->
                         <div class="widget-box">
                             <div class="widget-header" style="background: linear-gradient(90deg, #ff3385, #9933ff);">
-                                <span>📸 mi cuenta de instagram</span>
+                                <span>📸 instagram oficial</span>
                                 <i class="fa-brands fa-instagram"></i>
                             </div>
                             <div class="widget-body" style="text-align:center;">
-                                <p style="font-size:13px; margin-bottom:8px; font-weight:700;">Visita mi perfil para ver mis fotos y publicaciones:</p>
-                                <a href="https://instagram.com/poxeco" target="_blank" rel="noopener noreferrer" class="ig-gloss-btn" style="width:100%; justify-content:center;">
+                                <p style="font-size:13px; margin-bottom:8px; font-weight:700;">Sígueme o mira mis fotos en Instagram:</p>
+                                <a href="https://instagram.com/poxeco" target="_blank" rel="noopener noreferrer" class="ig-gloss-btn" style="width:100%;">
                                     <i class="fa-brands fa-instagram" style="font-size:18px;"></i> Ir a @poxeco en Instagram
                                 </a>
                             </div>
@@ -709,55 +612,46 @@
                     </div>
                 </div>
 
-                <!-- SUB-SECCIÓN: ABOUT ME (Con todas tus respuestas en presente) -->
+                <!-- SUB-SECCIÓN: ABOUT ME -->
                 <div id="section-about" class="hidden">
                     <div class="about-top">
-                        <!-- Segunda Foto (De espaldas con mochila DC junto a planta/patio) -->
-                        <div style="position:relative; display:inline-block;">
-                            <img src="Screenshot 2026-11-13 at 09-52-22 Instagram.jpg" onerror="this.src='https://placehold.co/400x400/2eb82e/ffffff?text=Ivan+Mochila+DC';" onclick="document.getElementById('upload-secondary').click()" title="Haz clic para cargar tu foto secundaria en la vista previa" alt="Iván - explorando por sevilla" class="about-photo photo-sec">
-                            <div class="sticker-badge" style="bottom:-10px; left:50%; transform:translateX(-50%);">
+                        <!-- FOTO SECUNDARIA: explorando por sevilla -->
+                        <div class="about-photo-wrap">
+                            <img id="img-sec-about" alt="explorando por sevilla" class="about-photo photo-sec">
+                            <div class="sticker-badge" style="bottom:-10px; left:10px;">
                                 🌿 explorando por sevilla
                             </div>
                         </div>
-                        
                         <div>
                             <p class="intro-text" style="margin-bottom:10px;">
-                                ¡HOLA! Si encontraste esta página eres un crack. Soy <strong>Iván Sánchez Moreno</strong>, nacido el 7 de julio de 2009. Aquí puedes conocer más sobre mi vida, mis hobbies y lo que más quiero en este mundo.
+                                ¡HOLA! Si llegaste hasta aquí es porque quieres saber cómo soy. Soy <strong>Iván Sánchez Moreno</strong>, nacido el 7 de julio de 2009. Aquí tienes mis datos, mis hobbies y mi forma de ver la vida.
                             </p>
                             <a href="https://instagram.com/poxeco" target="_blank" rel="noopener noreferrer" class="ig-gloss-btn">
-                                <i class="fa-brands fa-instagram"></i> Seguir @poxeco en IG
+                                <i class="fa-brands fa-instagram"></i> Ver perfil de @poxeco
                             </a>
                         </div>
                     </div>
 
                     <div class="bio-list">
-                        <div class="bio-item">
-                            <span class="bio-label c-cyan">dream (mi mayor sueño):</span> Aprovecharlo todo, probar todo tipo de cosas y coleccionar muchas experiencias inolvidables.
-                        </div>
-                        <div class="bio-item">
-                            <span class="bio-label c-blue">¿qué prefiero, un amigo de verdad o varios de mentira?:</span> Un amigo de verdad.
-                        </div>
-                        <div class="bio-item">
-                            <span class="bio-label c-green">any pets? (mi mascota):</span> Coffee, es mi beagle y lo quiero mucho, es muy curioso, inquieto y juguetón aunque siempre esté lamiéndote y aunque a veces es perezoso. 🐶
-                        </div>
-                        <div class="bio-item">
-                            <span class="bio-label c-teal">current obsessions (mis pasiones):</span> Me encanta el rollerboarding e ir al skatepark (skp) a hacer trucos mientras escucho música. También quedar con amigos, lo son todo para mí, sin ellos no sé qué haría. 🛹🎧
-                        </div>
-                        <div class="bio-item">
-                            <span class="bio-label c-cyan">mi momento preferido:</span> Los viernes por la tarde cuando quedo con mis amigos para jugar en llamada o para salir a la calle.
-                        </div>
-                        <div class="bio-item">
-                            <span class="bio-label c-purple">recuerdos inolvidables:</span> Mi viaje a Chequia de Erasmus 🇨🇿✈️ y el día que fui a Londres con mis amigos de clase 🇬🇧.
-                        </div>
-                        <div class="bio-item" style="background: rgba(0, 170, 255, 0.1); padding: 10px; border-radius: 10px; border: 1px solid #66ccff; margin-top: 8px;">
-                            <span class="bio-label c-green">mensaje para mis amigos y seres queridos:</span><br>
-                            "A todos mis amigos y mis seres queridos, muchas gracias por estar ahí conmigo en las buenas y en las malas, por ayudarme y quererme como persona. Os quiero." ❤️
+                        <div><span class="bio-label c-blue">nombre completo:</span> Iván Sánchez Moreno (@poxeco)</div>
+                        <div><span class="bio-label c-green">fecha de nacimiento:</span> 7 de julio de 2009 (Cáncer ♋)</div>
+                        <div><span class="bio-label c-teal">altura:</span> 1,77 m</div>
+                        <div><span class="bio-label c-purple">any pets?:</span> Coffee, es mi beagle y lo quiero mucho; es muy curioso, inquieto y juguetón, aunque siempre esté lamiéndote y a veces sea algo perezoso 🐶❤️.</div>
+                        <div><span class="bio-label c-cyan">current obsessions:</span> Me encanta el rollerboarding e ir al skatepark a hacer trucos mientras escucho música. También quedar con mis amigos, lo son todo para mí.</div>
+                        <div><span class="bio-label c-blue">dream:</span> Aprovechar todo, probar todo tipo de cosas y llevarme muchas experiencias inolvidables.</div>
+                        <div><span class="bio-label c-green">¿un amigo de verdad o varios de mentira?:</span> Un amigo de verdad.</div>
+                        <div><span class="bio-label c-teal">mi momento preferido:</span> Los viernes por la tarde cuando puedo quedar con mis amigos para jugar en llamada o para salir a la calle.</div>
+                        <div><span class="bio-label c-purple">recuerdos inolvidables:</span> Mi viaje a Chequia de Erasmus 🇨🇿 y el día que fui a Londres con mis amigos de clase 🇬🇧.</div>
+                        <div><span class="bio-label c-blue">mi consejo para ti:</span> Aprovecha tu vida al máximo y no dejes pasar ninguna oportunidad.</div>
+
+                        <div class="thanks-banner">
+                            💙 "A todos mis amigos y mis seres queridos, muchas gracias por estar ahí conmigo en las buenas y en las malas, por ayudarme y quererme como persona. Os quiero." 💙
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- VISTA 2: AERONET PROFILE (Estilo Social Retro, Galería de tus 2 fotos y QR, sin Top Friends) -->
+            <!-- VISTA 2: PERFIL ESTILO AERONET + GALERÍA + QR -->
             <div id="view-profile" class="hidden">
                 <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-bottom:10px;">
                     <div style="display:flex; align-items:center; gap:10px;">
@@ -765,53 +659,48 @@
                         <span style="font-size:26px; font-weight:800; color:#004466;">AeroNet</span>
                     </div>
                     <a href="https://instagram.com/poxeco" target="_blank" rel="noopener noreferrer" class="ig-gloss-btn">
-                        <i class="fa-brands fa-instagram"></i> @poxeco
+                        <i class="fa-brands fa-instagram"></i> Seguir a @poxeco
                     </a>
                 </div>
-                
                 <div class="social-banner">Perfil Personal de Iván Sánchez Moreno</div>
 
                 <div class="palster-grid">
-                    <!-- Bloque Izquierdo: Datos y Frase -->
+                    <!-- Bloque Izquierdo -->
                     <div class="profile-box">
                         <h3>IVÁN SÁNCHEZ MORENO</h3>
                         <div style="display:flex; gap:12px; align-items:flex-start;">
-                            <img src="Screenshot 2026-11-13 at 09-51-50 Instagram.jpg" onerror="this.src='https://placehold.co/200x230/0088cc/ffffff?text=Ivan';" class="photo-main" style="width:105px; height:120px; object-fit:cover; object-position:center top; border:2.5px solid #0088cc; border-radius:10px;">
-                            <div style="font-size:13.5px; line-height:1.55;">
-                                <p style="font-style:italic; color:#006699; font-weight:800; margin-bottom:8px;">
-                                    "Aprovecha tu vida al máximo y colecciona experiencias inolvidables."
+                            <img id="img-main-profile" alt="halloween 26" class="photo-main" style="width:105px; height:125px; object-fit:cover; border:2px solid #0088cc; border-radius:8px;">
+                            <div style="font-size:13px; line-height:1.5;">
+                                <p style="font-style:italic; color:#006699; font-weight:700; margin-bottom:6px;">
+                                    "Aprovecha tu vida y colecciona experiencias inolvidables."
                                 </p>
                                 <p><strong>Chico</strong>, 1,77 m, Cáncer ♋</p>
                                 <p><strong>Nacimiento:</strong> 07/07/2009</p>
                                 <p><strong>Mascota:</strong> Coffee (Beagle) 🐶</p>
-                                <p><strong>Instagram:</strong> <a href="https://instagram.com/poxeco" target="_blank" rel="noopener noreferrer" style="color:#cc0066; font-weight:800;">@poxeco</a></p>
+                                <p><strong>IG:</strong> <a href="https://instagram.com/poxeco" target="_blank" rel="noopener noreferrer" style="color:#cc0066; font-weight:800;">@poxeco</a></p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Bloque Derecho: Código QR -->
                     <div class="profile-box" style="text-align:center;">
-                        <h3>MI CÓDIGO QR</h3>
+                        <h3>CÓDIGO QR DEL PERFIL</h3>
                         <div id="qrcode" style="display:inline-block; padding:8px; background:#fff; border:2px solid #33cc33; border-radius:10px;"></div>
-                        <div>
-                            <button onclick="downloadQR()" class="qr-download-btn">
-                                <i class="fa-solid fa-download"></i> Descargar QR (.PNG)
-                            </button>
-                        </div>
+                        <p style="font-size:12px; margin-top:6px; color:#005580; font-weight:700;">Escanea para entrar a mi mundo</p>
                     </div>
                 </div>
 
-                <!-- Galería con tus 2 fotos -->
+                <!-- Galería de Fotos -->
                 <div class="profile-box" style="margin-top:16px;">
-                    <h3>GALERÍA DE RECUERDOS DE IVÁN</h3>
-                    <div class="gallery-mini-grid">
-                        <div class="gallery-card" onclick="document.getElementById('upload-main').click()">
-                            <img src="Screenshot 2026-11-13 at 09-51-50 Instagram.jpg" onerror="this.src='https://placehold.co/300x200/0088cc/ffffff?text=halloween+26';" alt="halloween 26" class="photo-main">
-                            <p style="font-size:13px; font-weight:800; color:#005580;">halloween 26 🎃⌚</p>
+                    <h3>GALERÍA DE IVÁN (@POXECO)</h3>
+                    <div class="gallery-strip">
+                        <div class="gallery-card">
+                            <img id="img-main-gallery" alt="halloween 26" class="photo-main">
+                            <div style="font-size:14px; font-weight:800; color:#005580;">halloween 26</div>
                         </div>
-                        <div class="gallery-card" onclick="document.getElementById('upload-secondary').click()">
-                            <img src="Screenshot 2026-11-13 at 09-52-22 Instagram.jpg" onerror="this.src='https://placehold.co/300x200/2eb82e/ffffff?text=explorando+por+sevilla';" alt="explorando por sevilla" class="photo-sec">
-                            <p style="font-size:13px; font-weight:800; color:#1f8a1f;">explorando por sevilla 🌿🎒</p>
+                        <div class="gallery-card">
+                            <img id="img-sec-gallery" alt="explorando por sevilla" class="photo-sec">
+                            <div style="font-size:14px; font-weight:800; color:#248f24;">explorando por sevilla</div>
                         </div>
                     </div>
                 </div>
@@ -819,28 +708,22 @@
                 <!-- Bloque Inferior: Más sobre Iván -->
                 <div class="profile-box" style="margin-top:16px;">
                     <h3>MÁS SOBRE IVÁN</h3>
-                    <p style="font-size:14px; line-height:1.6; color:#00334d; margin-bottom:10px;">
-                        ¡Qué pasa! Soy Iván (@poxeco). Me encanta el rollerboarding, ir al skatepark a tirar trucos con música y pasar tiempo con mi beagle Coffee y mis amigos, que lo son todo para mí. Entre mis mejores recuerdos están mi viaje a Chequia de Erasmus y el día que fui a Londres con mis amigos de clase. Si quieres escuchar la música que me define y escucho actualmente, dale aquí:
+                    <p style="font-size:14px; line-height:1.6; color:#00334d;">
+                        ¡Qué pasa! Soy Iván (@poxeco). Me flipa la estética Frutiger Aero, el rollerboarding y pasar el rato en el skatepark escuchando música. Siempre recuerdo mi viaje a Chequia de Erasmus y el día que fui a Londres con mis amigos de clase, además de los viernes por la tarde jugando en llamada o saliendo a la calle con mis colegas. 
+                        <br><br>
+                        Escucha mi música aquí: <a href="https://open.spotify.com/playlist/5WVI1C3Bf2m2KpocjCXYnk?si=ZFebK4rlRiKiLVWr6xLbCg&utm_source=copy-link" target="_blank" rel="noopener noreferrer" style="color:#248f24; font-weight:800;">Playlist de Spotify</a> | Sígueme en Instagram: <a href="https://instagram.com/poxeco" target="_blank" rel="noopener noreferrer" style="color:#cc0066; font-weight:800;">@poxeco</a>
                     </p>
-                    <div style="display:flex; flex-wrap:wrap; gap:10px;">
-                        <a href="https://open.spotify.com/playlist/5WVI1C3Bf2m2KpocjCXYnk?si=ZFebK4rlRiKiLVWr6xLbCg&utm_source=copy-link" target="_blank" rel="noopener noreferrer" class="spotify-btn" style="margin-top:0; padding:8px 16px;">
-                            <i class="fa-brands fa-spotify"></i> Escuchar Playlist en Spotify
-                        </a>
-                        <a href="https://instagram.com/poxeco" target="_blank" rel="noopener noreferrer" class="ig-gloss-btn">
-                            <i class="fa-brands fa-instagram"></i> Visitar @poxeco
-                        </a>
-                    </div>
                 </div>
             </div>
 
             <!-- Selector de color de fondo inferior -->
             <div class="bg-customizer">
-                <span style="font-size:12px; color:#006699;">
-                    <i class="fa-solid fa-camera"></i> Tip: Usa "Foto 1" y "Foto 2" arriba para probar tus imágenes locales en vivo
-                </span>
+                <a href="https://instagram.com/poxeco" target="_blank" rel="noopener noreferrer" style="color:#cc0066; text-decoration:none; font-weight:800;">
+                    <i class="fa-brands fa-instagram"></i> instagram.com/poxeco
+                </a>
                 <div class="swatch-group">
                     <span>customize background color!!!</span>
-                    <div class="color-swatch" style="background:#80e5ff;" onclick="changeBg('linear-gradient(180deg, #b8f0ff 0%, #e4ffd6 52%, #a3ecff 100%)')" title="Aero Sky"></div>
+                    <div class="color-swatch" style="background:#80e5ff;" onclick="changeBg('linear-gradient(180deg, #b3ecff 0%, #e6ffcc 50%, #99ebff 100%)')" title="Aero Sky"></div>
                     <div class="color-swatch" style="background:#66ff99;" onclick="changeBg('linear-gradient(180deg, #ccffdd 0%, #99ffbb 50%, #b3f0ff 100%)')" title="Eco Lime"></div>
                     <div class="color-swatch" style="background:#0099ff;" onclick="changeBg('linear-gradient(180deg, #80ccff 0%, #ccebff 100%)')" title="Deep Ocean"></div>
                     <div class="color-swatch" style="background:#ffffff;" onclick="changeBg('#f4fbff')" title="Crystal White"></div>
@@ -851,7 +734,13 @@
     </div>
 
     <script>
-        // Cambiar entre pestaña principal (ivan's world XD) y perfil (AeroNet Profile)
+        // Rutas por defecto (o pega aquí el Data URI Base64 para que sea 100% autocontenido)
+        const PHOTO_MAIN_SRC = "Screenshot 2026-11-13 at 09-51-50 Instagram.jpg";
+        const PHOTO_SEC_SRC  = "Screenshot 2026-11-13 at 09-52-22 Instagram.jpg";
+
+        document.querySelectorAll('.photo-main').forEach(img => img.src = PHOTO_MAIN_SRC);
+        document.querySelectorAll('.photo-sec').forEach(img => img.src = PHOTO_SEC_SRC);
+
         function switchMainTab(tab) {
             const viewWorld = document.getElementById('view-world');
             const viewProfile = document.getElementById('view-profile');
@@ -874,7 +763,6 @@
             }
         }
 
-        // Cambiar entre subsecciones Home y About Me
         function showSection(sec) {
             switchMainTab('world');
             const home = document.getElementById('section-home');
@@ -898,74 +786,31 @@
             }
         }
 
-        // Selector interactivo de fondo Frutiger Aero
         function changeBg(bgValue) {
             const canvas = document.getElementById('page-canvas');
             canvas.style.background = bgValue;
         }
 
-        // Permitir cargar fotos desde el dispositivo en todas las instancias de la vista previa
-        function previewPhoto(event, target) {
-            const file = event.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const selector = target === 'main' ? '.photo-main' : '.photo-sec';
-                document.querySelectorAll(selector).forEach(img => {
-                    img.src = e.target.result;
-                });
-            };
-            reader.readAsDataURL(file);
+        const bubblesContainer = document.getElementById('bubbles');
+        for (let i = 0; i < 16; i++) {
+            const b = document.createElement('div');
+            b.className = 'bubble';
+            const size = Math.random() * 55 + 20;
+            b.style.width = size + 'px';
+            b.style.height = size + 'px';
+            b.style.left = Math.random() * 100 + '%';
+            b.style.animationDelay = (Math.random() * 10) + 's';
+            b.style.animationDuration = (Math.random() * 8 + 10) + 's';
+            bubblesContainer.appendChild(b);
         }
 
-        // Generar burbujas flotantes 3D
-        function initBubbles() {
-            const bubblesContainer = document.getElementById('bubbles');
-            bubblesContainer.innerHTML = '';
-            for (let i = 0; i < 18; i++) {
-                const b = document.createElement('div');
-                b.className = 'bubble-3d';
-                const size = Math.random() * 58 + 22;
-                b.style.width = size + 'px';
-                b.style.height = size + 'px';
-                b.style.left = Math.random() * 100 + '%';
-                b.style.animationDelay = (Math.random() * 10) + 's';
-                b.style.animationDuration = (Math.random() * 8 + 10) + 's';
-                bubblesContainer.appendChild(b);
-            }
-        }
-
-        // Generar Código QR en la pestaña de perfil
-        function initQR() {
-            const qrEl = document.getElementById("qrcode");
-            qrEl.innerHTML = '';
-            new QRCode(qrEl, {
-                text: window.location.href,
-                width: 115,
-                height: 115,
-                colorDark: "#004466",
-                colorLight: "#ffffff",
-                correctLevel: QRCode.CorrectLevel.H
-            });
-        }
-
-        // Descargar el Código QR en formato PNG
-        function downloadQR() {
-            const img = document.querySelector("#qrcode img");
-            if (img && img.src) {
-                const link = document.createElement('a');
-                link.href = img.src;
-                link.download = 'qr-ivan-poxeco.png';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            }
-        }
-
-        window.onload = function() {
-            initBubbles();
-            initQR();
-        };
+        new QRCode(document.getElementById("qrcode"), {
+            text: window.location.href,
+            width: 110,
+            height: 110,
+            colorDark: "#004466",
+            colorLight: "#ffffff"
+        });
     </script>
 </body>
 </html>
